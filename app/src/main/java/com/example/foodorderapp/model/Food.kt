@@ -2,6 +2,7 @@ package com.example.foodorderapp.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Food(
     @SerializedName("yemek_id")
@@ -12,4 +13,4 @@ data class Food(
     @Expose var foodImageName: String,
     @SerializedName("yemek_fiyat")
     @Expose var foodPrice: Int
-)
+) : Serializable

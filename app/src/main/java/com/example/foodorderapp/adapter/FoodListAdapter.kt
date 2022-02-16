@@ -2,12 +2,15 @@ package com.example.foodorderapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.foodorderapp.bindingadapter.loadImage
 import com.example.foodorderapp.databinding.FoodRowItemBinding
+import com.example.foodorderapp.fragments.FoodListFragmentDirections
 import com.example.foodorderapp.model.Food
 import com.example.foodorderapp.util.FoodListDiffUtil
-import com.squareup.picasso.Picasso
 
 class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.MyViewHolder>() {
     private var foodList = emptyList<Food>()
@@ -36,10 +39,11 @@ class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.MyViewHolder>() {
         val currentFood = foodList[position]
         holder.bind(currentFood)
 
-        // Show food image with Picasso
-        val imageName = currentFood.foodImageName
-        val url = "http://kasimadalan.pe.hu/yemekler/resimler/$imageName"
-        Picasso.get().load(url).into(holder.binding.imageViewFood)
+        holder.binding.cardViewFood.setOnClickListener {
+            val action =
+                FoodListFragmentDirections.actionFoodListFragmentToFoodDetailFragment(currentFood)
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {

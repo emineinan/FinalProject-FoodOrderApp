@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_foodDetailFragment_to_foodBasketFragment"
             app:destination="@id/foodBasketFragment" />
+        <argument
+            android:name="food"
+            app:argType="com.example.foodorderapp.model.Food" />
     </fragment>
     <fragment
         android:id="@+id/foodBasketFragment"
