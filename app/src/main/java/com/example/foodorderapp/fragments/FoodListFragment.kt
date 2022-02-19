@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.example.foodorderapp.R
-import com.example.foodorderapp.adapter.FoodListAdapter
+import com.example.foodorderapp.adapter.foodadapter.FoodListAdapter
 import com.example.foodorderapp.databinding.FragmentFoodListBinding
 import com.example.foodorderapp.viewmodel.FoodListViewModel
 

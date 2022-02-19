@@ -1,6 +1,6 @@
 package com.example.foodorderapp.retrofit
 
-import com.example.foodorderapp.model.FoodResponse
+import com.example.foodorderapp.model.food.FoodResponse
 import retrofit2.Call
 import retrofit2.http.GET
 

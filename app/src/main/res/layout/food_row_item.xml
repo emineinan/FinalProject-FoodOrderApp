@@ -6,7 +6,7 @@
 
         <variable
             name="food"
-            type="com.example.foodorderapp.model.Food" />
+            type="com.example.foodorderapp.model.food.Food" />
 
     </data>
 

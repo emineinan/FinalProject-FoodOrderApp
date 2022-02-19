@@ -1,5 +1,6 @@
-package com.example.foodorderapp.model
+package com.example.foodorderapp.model.food
 
+import com.example.foodorderapp.model.food.Food
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 

@@ -1,8 +1,8 @@
 package com.example.foodorderapp.repository
 
 import androidx.lifecycle.MutableLiveData
-import com.example.foodorderapp.model.Food
-import com.example.foodorderapp.model.FoodResponse
+import com.example.foodorderapp.model.food.Food
+import com.example.foodorderapp.model.food.FoodResponse
 import com.example.foodorderapp.retrofit.ApiUtils
 import com.example.foodorderapp.retrofit.FoodDaoInterface
 import retrofit2.Call

@@ -2,7 +2,7 @@ package com.example.foodorderapp.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.foodorderapp.model.Food
+import com.example.foodorderapp.model.food.Food
 import com.example.foodorderapp.repository.FoodDaoRepository
 
 class FoodListViewModel : ViewModel() {

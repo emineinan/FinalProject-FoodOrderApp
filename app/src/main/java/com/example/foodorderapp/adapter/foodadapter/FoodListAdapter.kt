@@ -1,15 +1,13 @@
-package com.example.foodorderapp.adapter
+package com.example.foodorderapp.adapter.foodadapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.foodorderapp.bindingadapter.loadImage
 import com.example.foodorderapp.databinding.FoodRowItemBinding
 import com.example.foodorderapp.fragments.FoodListFragmentDirections
-import com.example.foodorderapp.model.Food
+import com.example.foodorderapp.model.food.Food
 import com.example.foodorderapp.util.FoodListDiffUtil
 
 class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.MyViewHolder>() {

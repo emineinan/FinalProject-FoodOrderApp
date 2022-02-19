@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.example.foodorderapp.R
 import com.example.foodorderapp.databinding.FragmentFoodDetailBinding
+import com.example.foodorderapp.model.foodbasket.FoodBasket
 import com.example.foodorderapp.viewmodel.FoodDetailViewModel
 
 class FoodDetailFragment : Fragment() {
@@ -28,22 +29,25 @@ class FoodDetailFragment : Fragment() {
         val food = args.food
         binding.food = food
 
-        binding.buttonFoodBasketDetail.setOnClickListener {
-            val action = FoodDetailFragmentDirections.actionFoodDetailFragmentToFoodBasketFragment()
+        binding.buttonAddToBasket.setOnClickListener {
+            viewModel.addFoodsToBasket(food.foodName, food.foodImageName, food.foodPrice, count, "e_inan")
+
+            val action =
+                FoodDetailFragmentDirections.actionFoodDetailFragmentToFoodBasketFragment(count)
             Navigation.findNavController(it).navigate(action)
         }
 
-        binding.chipAdd.setOnClickListener {
+        binding.imageViewIncrease.setOnClickListener {
             count++
-            binding.textViewAmount.text = count.toString()
+            binding.textViewQuantity.text = count.toString()
             binding.textViewFoodPriceDetail.text = (count * food.foodPrice).toString() + " ₺"
         }
 
-        binding.chipMinus.setOnClickListener {
+        binding.imageViewDecrease.setOnClickListener {
             if (count > 1) {
                 count--
-                binding.chipMinus.isClickable = true
-                binding.textViewAmount.text = count.toString()
+                binding.imageViewDecrease.isClickable = true
+                binding.textViewQuantity.text = count.toString()
                 binding.textViewFoodPriceDetail.text = (count * food.foodPrice).toString() + " ₺"
             } else {
                 Toast.makeText(
