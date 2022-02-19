@@ -2,21 +2,16 @@ package com.example.foodorderapp.fragments
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.navArgs
 import com.example.foodorderapp.R
-import com.example.foodorderapp.adapter.foodadapter.FoodListAdapter
 import com.example.foodorderapp.adapter.foodbasketadapter.FoodBasketAdapter
 import com.example.foodorderapp.databinding.FragmentFoodBasketBinding
-import com.example.foodorderapp.model.foodbasket.FoodBasket
 import com.example.foodorderapp.viewmodel.FoodBasketViewModel
-import com.example.foodorderapp.viewmodel.FoodDetailViewModel
-import com.example.foodorderapp.viewmodel.FoodListViewModel
 
 class FoodBasketFragment : Fragment() {
     private lateinit var binding: FragmentFoodBasketBinding
@@ -35,9 +30,10 @@ class FoodBasketFragment : Fragment() {
 
         viewModel.loadFoodsFromBasket("e_inan")
         viewModel.foodBasketList.observe(viewLifecycleOwner, {
-            foodBasketAdapter = FoodBasketAdapter()
+            foodBasketAdapter = FoodBasketAdapter(requireContext(), viewModel)
             binding.foodBasketAdapter = foodBasketAdapter
             foodBasketAdapter.setData(it)
+            Log.e("HATA", it.size.toString())
         })
 
         return binding.root
@@ -48,6 +44,11 @@ class FoodBasketFragment : Fragment() {
 
         val tempViewModel: FoodBasketViewModel by viewModels()
         viewModel = tempViewModel
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadFoodsFromBasket("e_inan")
     }
 
 }

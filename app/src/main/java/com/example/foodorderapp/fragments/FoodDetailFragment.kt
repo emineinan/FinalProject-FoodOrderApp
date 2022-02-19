@@ -1,6 +1,7 @@
 package com.example.foodorderapp.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,6 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.example.foodorderapp.R
 import com.example.foodorderapp.databinding.FragmentFoodDetailBinding
-import com.example.foodorderapp.model.foodbasket.FoodBasket
 import com.example.foodorderapp.viewmodel.FoodDetailViewModel
 
 class FoodDetailFragment : Fragment() {

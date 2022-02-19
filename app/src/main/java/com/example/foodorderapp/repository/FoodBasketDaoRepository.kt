@@ -1,7 +1,5 @@
 package com.example.foodorderapp.repository
 
-import android.content.Context
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.example.foodorderapp.model.foodbasket.FoodBasket
 import com.example.foodorderapp.model.foodbasket.FoodBasketResponse
@@ -43,7 +41,7 @@ class FoodBasketDaoRepository {
                     call: Call<FoodBasketResponse>,
                     response: Response<FoodBasketResponse>
                 ) {
-                    //toast mesaj ya da snackbar ekle
+                    getAllFoodsFromBasket(usernameBasket)
                 }
 
                 override fun onFailure(call: Call<FoodBasketResponse>?, t: Throwable?) {
