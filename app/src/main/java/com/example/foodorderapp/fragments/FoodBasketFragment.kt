@@ -1,13 +1,12 @@
 package com.example.foodorderapp.fragments
 
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.example.foodorderapp.R
 import com.example.foodorderapp.adapter.foodbasketadapter.FoodBasketAdapter
 import com.example.foodorderapp.databinding.FragmentFoodBasketBinding
@@ -17,6 +16,7 @@ class FoodBasketFragment : Fragment() {
     private lateinit var binding: FragmentFoodBasketBinding
     private lateinit var foodBasketAdapter: FoodBasketAdapter
     private lateinit var viewModel: FoodBasketViewModel
+    private val args: FoodBasketFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,29 +26,56 @@ class FoodBasketFragment : Fragment() {
 
         binding.foodBasketFragment = this
         binding.foodBasketToolbar = "Sepetim"
+        (activity as AppCompatActivity).setSupportActionBar(binding.toolbarFoodBasket)
 
+        setAdapter()
 
         viewModel.loadFoodsFromBasket("e_inan")
-        viewModel.foodBasketList.observe(viewLifecycleOwner, {
-            foodBasketAdapter = FoodBasketAdapter(requireContext(), viewModel)
-            binding.foodBasketAdapter = foodBasketAdapter
-            foodBasketAdapter.setData(it)
-            Log.e("HATA", it.size.toString())
-        })
+
+        getAllFoodsFromBasket()
+
+        clearAllFoodsFromBasket()
 
         return binding.root
     }
 
+    private fun clearAllFoodsFromBasket() {
+        foodBasketAdapter.clearAll()
+    }
+
+    private fun getAllFoodsFromBasket() {
+        viewModel.foodBasketList.observe(viewLifecycleOwner, {
+            foodBasketAdapter.setData(it)
+        })
+    }
+
+    private fun setAdapter() {
+        foodBasketAdapter = FoodBasketAdapter(requireContext(), viewModel, args)
+        binding.foodBasketAdapter = foodBasketAdapter
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
 
         val tempViewModel: FoodBasketViewModel by viewModels()
         viewModel = tempViewModel
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.loadFoodsFromBasket("e_inan")
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.delete_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_delete) {
+            clearAllFoodsFromBasket()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getAllFoodsFromBasket()
+    }
 }

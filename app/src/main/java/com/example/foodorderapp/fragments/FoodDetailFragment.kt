@@ -1,7 +1,6 @@
 package com.example.foodorderapp.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +18,7 @@ class FoodDetailFragment : Fragment() {
     private lateinit var binding: FragmentFoodDetailBinding
     private lateinit var viewModel: FoodDetailViewModel
     private val args: FoodDetailFragmentArgs by navArgs()
-    private var count = 1
+    private var quantity = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,25 +29,25 @@ class FoodDetailFragment : Fragment() {
         binding.food = food
 
         binding.buttonAddToBasket.setOnClickListener {
-            viewModel.addFoodsToBasket(food.foodName, food.foodImageName, food.foodPrice, count, "e_inan")
+            viewModel.addFoodsToBasket(food.foodName, food.foodImageName, food.foodPrice, quantity, "e_inan")
 
             val action =
-                FoodDetailFragmentDirections.actionFoodDetailFragmentToFoodBasketFragment(count)
+                FoodDetailFragmentDirections.actionFoodDetailFragmentToFoodBasketFragment(quantity)
             Navigation.findNavController(it).navigate(action)
         }
 
         binding.imageViewIncrease.setOnClickListener {
-            count++
-            binding.textViewQuantity.text = count.toString()
-            binding.textViewFoodPriceDetail.text = (count * food.foodPrice).toString() + " ₺"
+            quantity++
+            binding.textViewQuantity.text = quantity.toString()
+            binding.textViewFoodPriceDetail.text = (quantity * food.foodPrice).toString() + " ₺"
         }
 
         binding.imageViewDecrease.setOnClickListener {
-            if (count > 1) {
-                count--
+            if (quantity > 1) {
+                quantity--
                 binding.imageViewDecrease.isClickable = true
-                binding.textViewQuantity.text = count.toString()
-                binding.textViewFoodPriceDetail.text = (count * food.foodPrice).toString() + " ₺"
+                binding.textViewQuantity.text = quantity.toString()
+                binding.textViewFoodPriceDetail.text = (quantity * food.foodPrice).toString() + " ₺"
             } else {
                 Toast.makeText(
                     requireContext(),

@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/BitirmeProjesi/FinalProject-FoodOrderApp/app/src/main/res/drawable/cardview_rounded.xml" value="0.26979166666666665" />
         <entry key="..\:/BitirmeProjesi/FinalProject-FoodOrderApp/app/src/main/res/drawable/ic_add.xml" value="0.26979166666666665" />
+        <entry key="..\:/BitirmeProjesi/FinalProject-FoodOrderApp/app/src/main/res/drawable/ic_delete.xml" value="0.26979166666666665" />
         <entry key="..\:/BitirmeProjesi/FinalProject-FoodOrderApp/app/src/main/res/drawable/ic_minus.xml" value="0.26979166666666665" />
         <entry key="..\:/BitirmeProjesi/FinalProject-FoodOrderApp/app/src/main/res/drawable/rounded_corner.xml" value="0.26979166666666665" />
         <entry key="..\:/BitirmeProjesi/FinalProject-FoodOrderApp/app/src/main/res/drawable/rounded_stroke.xml" value="0.26979166666666665" />
@@ -15,6 +16,7 @@
         <entry key="..\:/BitirmeProjesi/FinalProject-FoodOrderApp/app/src/main/res/layout/fragment_food_basket.xml" value="0.264" />
         <entry key="..\:/BitirmeProjesi/FinalProject-FoodOrderApp/app/src/main/res/layout/fragment_food_detail.xml" value="0.264" />
         <entry key="..\:/BitirmeProjesi/FinalProject-FoodOrderApp/app/src/main/res/layout/fragment_food_list.xml" value="0.25364583333333335" />
+        <entry key="..\:/BitirmeProjesi/FinalProject-FoodOrderApp/app/src/main/res/menu/delete_menu.xml" value="0.25364583333333335" />
       </map>
     </option>
   </component>

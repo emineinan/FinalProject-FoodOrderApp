@@ -6,4 +6,5 @@
     <string name="add">+</string>
     <string name="add_to_basket">Sepete Ekle</string>
     <string name="basket">Sepetim</string>
+    <string name="delete">Delete</string>
 </resources>
