@@ -1,10 +1,9 @@
 package com.example.foodorderapp.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -25,11 +24,20 @@ class FoodDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_food_detail, container, false)
+        binding.foodDetailToolbar = "Yemek Detayı"
+        (activity as AppCompatActivity).setSupportActionBar(binding.toolbarDetail)
+
         val food = args.food
         binding.food = food
 
         binding.buttonAddToBasket.setOnClickListener {
-            viewModel.addFoodsToBasket(food.foodName, food.foodImageName, food.foodPrice, quantity, "e_inan")
+            viewModel.addFoodsToBasket(
+                food.foodName,
+                food.foodImageName,
+                food.foodPrice,
+                quantity,
+                "e_inan"
+            )
 
             val action =
                 FoodDetailFragmentDirections.actionFoodDetailFragmentToFoodBasketFragment(quantity)
@@ -62,8 +70,23 @@ class FoodDetailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
 
         val tempViewModel: FoodDetailViewModel by viewModels()
         viewModel = tempViewModel
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.basket_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_basket) {
+            val action =
+                FoodDetailFragmentDirections.actionFoodDetailFragmentToFoodBasketFragment()
+            Navigation.findNavController(binding.root).navigate(action)
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

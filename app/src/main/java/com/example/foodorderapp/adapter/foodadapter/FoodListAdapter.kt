@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.foodorderapp.databinding.FoodRowItemBinding
 import com.example.foodorderapp.fragments.FoodListFragmentDirections
 import com.example.foodorderapp.model.food.Food
-import com.example.foodorderapp.util.FoodListDiffUtil
 
 class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.MyViewHolder>() {
     private var foodList = emptyList<Food>()
@@ -42,6 +41,8 @@ class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.MyViewHolder>() {
                 FoodListFragmentDirections.actionFoodListFragmentToFoodDetailFragment(currentFood)
             Navigation.findNavController(it).navigate(action)
         }
+
+        holder.binding.textViewRating.text = (1 until 6).random().toDouble().toString()
     }
 
     override fun getItemCount(): Int {

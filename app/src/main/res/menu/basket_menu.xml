@@ -4,7 +4,7 @@
     <item
         android:id="@+id/action_basket"
         android:icon="@drawable/ic_basket"
-        android:iconTint="@color/white"
+        android:iconTint="@color/darkColor"
         android:title="@string/basket_shopping"
         app:showAsAction="always" />
 </menu>

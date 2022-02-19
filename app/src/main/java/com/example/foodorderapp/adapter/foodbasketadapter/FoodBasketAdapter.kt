@@ -75,6 +75,7 @@ class FoodBasketAdapter(
                 holder.binding.textViewFoodPriceBasket.text =
                     (quantity * currentFood.foodPriceBasket).toString() + " ₺"
                 totalPrice += (quantity * currentFood.foodPriceBasket)
+                notifyDataSetChanged()
             }
         }
     }

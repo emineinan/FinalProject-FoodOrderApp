@@ -8,4 +8,6 @@
     <string name="basket">Sepetim</string>
     <string name="delete">Delete</string>
     <string name="basket_shopping">Basket</string>
+    <string name="ucretsiz_teslimat">Ücretsiz Teslimat</string>
+    <string name="_25_35_dk">25-35 dk</string>
 </resources>

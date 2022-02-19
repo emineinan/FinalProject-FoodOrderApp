@@ -1,4 +1,4 @@
-package com.example.foodorderapp.util
+package com.example.foodorderapp.adapter.foodadapter
 
 import androidx.recyclerview.widget.DiffUtil
 

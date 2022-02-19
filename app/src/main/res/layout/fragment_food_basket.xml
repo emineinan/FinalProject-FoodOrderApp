@@ -32,6 +32,7 @@
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
+            app:titleTextColor="@color/darkColor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:title="@{foodBasketToolbar}" />
@@ -43,32 +44,23 @@
             android:layout_marginBottom="16dp"
             android:adapter="@{foodBasketAdapter}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toTopOf="@+id/textViewTotalBasketPrice"
+            app:layout_constraintBottom_toTopOf="@+id/buttonOrder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbarFoodBasket"
             tools:listitem="@layout/food_basket_row_item" />
 
-        <TextView
-            android:id="@+id/textViewTotalBasketPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="16dp"
-            android:text="Sepet Tutarı"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
         <Button
-            android:id="@+id/buttonContinue"
+            android:id="@+id/buttonOrder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:text="Devam Et"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewTotalBasketPrice"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewTotalBasketPrice" />
+            android:layout_marginBottom="8dp"
+            android:text="Sipariş Ver"
+            android:background="@drawable/rounded_corner"
+            android:textColor="@color/darkColor"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

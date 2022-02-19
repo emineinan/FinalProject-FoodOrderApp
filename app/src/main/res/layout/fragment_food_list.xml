@@ -33,18 +33,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:titleTextColor="@color/darkColor"
             app:title="@{foodListToolbar}" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewFoods"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginTop="8dp"
             android:adapter="@{foodListAdapter}"
-            tools:listitem="@layout/food_row_item"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarFoodList" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbarFoodList"
+            app:spanCount="2"
+            tools:listitem="@layout/food_row_item" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -39,6 +39,7 @@
                     android:text="@{foodBasket.foodNameBasket}"
                     android:textSize="20sp"
                     android:textStyle="bold"
+                    android:textColor="@color/darkColor"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,6 +51,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
                     android:textSize="18sp"
+                    android:textColor="@color/darkColor"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewfoodNameBasket" />
@@ -74,10 +76,10 @@
 
                         <ImageView
                             android:id="@+id/imageViewDecrease"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:background="@color/white"
+                            android:background="@color/mainColor"
                             android:clickable="true"
                             android:focusable="true"
                             android:padding="8dp"
@@ -86,24 +88,24 @@
 
                         <TextView
                             android:id="@+id/textViewQuantity"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:background="@color/purple_700"
+                            android:background="@color/mainColor"
                             android:paddingStart="8dp"
                             android:paddingTop="4dp"
                             android:paddingEnd="8dp"
                             android:paddingBottom="4dp"
                             android:text="1"
-                            android:textColor="@android:color/white"
+                            android:textColor="@color/darkColor"
                             android:textSize="14sp" />
 
                         <ImageView
                             android:id="@+id/imageViewIncrease"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:background="@color/white"
+                            android:background="@color/mainColor"
                             android:clickable="true"
                             android:focusable="true"
                             android:padding="8dp"
