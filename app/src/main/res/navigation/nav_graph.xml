@@ -49,6 +49,9 @@
         <action
             android:id="@+id/action_foodBasketFragment_to_endFragment"
             app:destination="@id/endFragment" />
+        <action
+            android:id="@+id/action_foodBasketFragment_to_foodListFragment"
+            app:destination="@id/foodListFragment" />
     </fragment>
     <fragment
         android:id="@+id/endFragment"

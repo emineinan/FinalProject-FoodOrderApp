@@ -35,18 +35,12 @@ class FoodBasketFragment : Fragment() {
 
         getAllFoodsFromBasket()
 
-        clearAllFoodsFromBasket()
-
         binding.buttonOrder.setOnClickListener {
             val action = FoodBasketFragmentDirections.actionFoodBasketFragmentToEndFragment()
             Navigation.findNavController(it).navigate(action)
         }
 
         return binding.root
-    }
-
-    private fun clearAllFoodsFromBasket() {
-        foodBasketAdapter.clearAll()
     }
 
     private fun getAllFoodsFromBasket() {
@@ -69,19 +63,21 @@ class FoodBasketFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.delete_menu, menu)
+        inflater.inflate(R.menu.home_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.action_delete) {
-            clearAllFoodsFromBasket()
+        if (item.itemId == R.id.action_home) {
+            val action =
+                FoodBasketFragmentDirections.actionFoodBasketFragmentToFoodListFragment()
+            Navigation.findNavController(binding.root).navigate(action)
         }
         return super.onOptionsItemSelected(item)
     }
 
     override fun onResume() {
         super.onResume()
-        getAllFoodsFromBasket()
+        viewModel.loadFoodsFromBasket("e_inan")
     }
 }
