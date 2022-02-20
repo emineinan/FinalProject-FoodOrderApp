@@ -3,7 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/foodListFragment">
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.foodorderapp.fragments.WelcomeFragment"
+        android:label="WelcomeFragment" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_foodListFragment"
+            app:destination="@id/foodListFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/foodListFragment"
@@ -37,5 +46,17 @@
         <argument android:name="foodQuantity"
             app:argType="integer"
             android:defaultValue="1" />
+        <action
+            android:id="@+id/action_foodBasketFragment_to_endFragment"
+            app:destination="@id/endFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/endFragment"
+        android:name="com.example.foodorderapp.fragments.EndFragment"
+        android:label="fragment_end"
+        tools:layout="@layout/fragment_end" >
+        <action
+            android:id="@+id/action_endFragment_to_foodListFragment"
+            app:destination="@id/foodListFragment" />
     </fragment>
 </navigation>

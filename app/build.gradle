@@ -67,4 +67,8 @@ dependencies {
 
     // Picasso Library
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //Lottie Library
+    implementation 'com.airbnb.android:lottie:4.1.0'
+
 }

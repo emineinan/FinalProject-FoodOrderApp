@@ -10,4 +10,8 @@
     <string name="basket_shopping">Basket</string>
     <string name="ucretsiz_teslimat">Ücretsiz Teslimat</string>
     <string name="_25_35_dk">25-35 dk</string>
+    <string name="welcome">DAKİKALAR İÇİNDE LEZZETLİ YEMEKLER KAPINDA</string>
+    <string name="basla">Başla</string>
+    <string name="siparis_alindi">Tebrikler, siparişin alındı.</string>
+    <string name="anasayfa">Anasayfa</string>
 </resources>

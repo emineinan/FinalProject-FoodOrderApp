@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.example.foodorderapp.R
 import com.example.foodorderapp.adapter.foodbasketadapter.FoodBasketAdapter
@@ -35,6 +36,11 @@ class FoodBasketFragment : Fragment() {
         getAllFoodsFromBasket()
 
         clearAllFoodsFromBasket()
+
+        binding.buttonOrder.setOnClickListener {
+            val action = FoodBasketFragmentDirections.actionFoodBasketFragmentToEndFragment()
+            Navigation.findNavController(it).navigate(action)
+        }
 
         return binding.root
     }
