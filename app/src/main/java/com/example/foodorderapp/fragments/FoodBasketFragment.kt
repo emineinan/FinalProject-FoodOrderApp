@@ -13,6 +13,7 @@ import com.example.foodorderapp.R
 import com.example.foodorderapp.adapter.foodbasketadapter.FoodBasketAdapter
 import com.example.foodorderapp.databinding.FragmentFoodBasketBinding
 import com.example.foodorderapp.viewmodel.FoodBasketViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class FoodBasketFragment : Fragment() {
     private lateinit var binding: FragmentFoodBasketBinding
@@ -63,11 +64,12 @@ class FoodBasketFragment : Fragment() {
         foodBasketAdapter.apply {
             onItemTrashClicked = { currentItem ->
                 viewModel.deleteFoodFromBasket(currentItem.foodIdBasket, "e_inan")
-                Toast.makeText(
-                    requireContext(),
+                Snackbar.make(
+                    binding.root,
                     "${currentItem.foodNameBasket} sepetten silindi.",
-                    Toast.LENGTH_SHORT
-                ).show()
+                    Snackbar.LENGTH_LONG
+                ).setAction("TAMAM") {
+                }.show()
             }
         }
     }

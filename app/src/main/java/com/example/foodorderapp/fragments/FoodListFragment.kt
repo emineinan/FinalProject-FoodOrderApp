@@ -3,14 +3,13 @@ package com.example.foodorderapp.fragments
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.foodorderapp.R
 import com.example.foodorderapp.adapter.foodadapter.FoodListAdapter
 import com.example.foodorderapp.databinding.FragmentFoodListBinding
-import com.example.foodorderapp.model.food.Food
 import com.example.foodorderapp.viewmodel.FoodListViewModel
 
 class FoodListFragment : Fragment() {

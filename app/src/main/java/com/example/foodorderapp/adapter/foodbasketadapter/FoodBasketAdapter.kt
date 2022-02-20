@@ -2,14 +2,18 @@ package com.example.foodorderapp.adapter.foodbasketadapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodorderapp.databinding.FoodBasketRowItemBinding
 import com.example.foodorderapp.fragments.FoodBasketFragmentArgs
+import com.example.foodorderapp.fragments.FoodBasketFragmentDirections
 import com.example.foodorderapp.model.foodbasket.FoodBasket
 import com.example.foodorderapp.viewmodel.FoodBasketViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class FoodBasketAdapter(
     var context: Context,
@@ -78,6 +82,12 @@ class FoodBasketAdapter(
             } else {
                 viewModel.deleteFoodFromBasket(currentFood.foodIdBasket, "e_inan")
                 clearAll()
+                Snackbar.make(
+                    it,
+                    "Sepetiniz boş, lütfen devam etmek için bir ürün ekleyin.",
+                    Snackbar.LENGTH_LONG
+                ).setAction("TAMAM") {
+                }.show()
             }
         }
     }
