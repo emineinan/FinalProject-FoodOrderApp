@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodorderapp.databinding.FoodBasketRowItemBinding
@@ -15,10 +14,10 @@ import com.example.foodorderapp.viewmodel.FoodBasketViewModel
 class FoodBasketAdapter(
     var context: Context,
     var viewModel: FoodBasketViewModel,
-    var args: FoodBasketFragmentArgs
+    var args: FoodBasketFragmentArgs,
+    var onItemTrashClicked: ((item: FoodBasket) -> Unit?)? = null
 ) : RecyclerView.Adapter<FoodBasketAdapter.MyViewHolder>() {
     private var foodBasketList = emptyList<FoodBasket>()
-    var totalPrice = 0
 
     class MyViewHolder(val binding: FoodBasketRowItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -44,7 +43,6 @@ class FoodBasketAdapter(
         val currentFood = foodBasketList[position]
         holder.bind(currentFood)
         var quantity = args.foodQuantity
-        totalPrice = (quantity * currentFood.foodPriceBasket)
 
         holder.binding.textViewQuantity.text = quantity.toString()
         holder.binding.textViewFoodPriceBasket.text =
@@ -55,27 +53,31 @@ class FoodBasketAdapter(
             holder.binding.textViewQuantity.text = quantity.toString()
             holder.binding.textViewFoodPriceBasket.text =
                 (quantity * currentFood.foodPriceBasket).toString() + " ₺"
-            totalPrice += (quantity * currentFood.foodPriceBasket)
         }
 
         holder.binding.imageViewDecrease.setOnClickListener {
-            if (quantity <= 1) {
-                if (foodBasketList.size != 1) {
-                    viewModel.deleteFoodFromBasket(currentFood.foodIdBasket, "e_inan")
-                    Toast.makeText(
-                        context,
-                        "${currentFood.foodNameBasket} sepetten silindi.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-                clearAll()
-            } else {
+            if (quantity > 1) {
+                holder.binding.imageViewDecrease.isClickable = true
                 quantity--
                 holder.binding.textViewQuantity.text = quantity.toString()
                 holder.binding.textViewFoodPriceBasket.text =
                     (quantity * currentFood.foodPriceBasket).toString() + " ₺"
-                totalPrice += (quantity * currentFood.foodPriceBasket)
-                notifyDataSetChanged()
+
+            } else {
+                Toast.makeText(
+                    context,
+                    "Adet sayısı 1'den küçük olamaz.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+
+        holder.binding.imageViewDelete.setOnClickListener {
+            if (foodBasketList.size != 1) {
+                onItemTrashClicked?.invoke(currentFood)
+            } else {
+                viewModel.deleteFoodFromBasket(currentFood.foodIdBasket, "e_inan")
+                clearAll()
             }
         }
     }
@@ -94,9 +96,5 @@ class FoodBasketAdapter(
     fun clearAll() {
         foodBasketList = emptyList()
         notifyDataSetChanged()
-    }
-
-    fun calculateBasketPrice(): String {
-        return totalPrice.toString()
     }
 }

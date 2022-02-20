@@ -2,6 +2,7 @@ package com.example.foodorderapp.fragments
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -15,9 +16,15 @@ import com.example.foodorderapp.viewmodel.FoodBasketViewModel
 
 class FoodBasketFragment : Fragment() {
     private lateinit var binding: FragmentFoodBasketBinding
-    private lateinit var foodBasketAdapter: FoodBasketAdapter
     private lateinit var viewModel: FoodBasketViewModel
     private val args: FoodBasketFragmentArgs by navArgs()
+    private val foodBasketAdapter: FoodBasketAdapter by lazy {
+        FoodBasketAdapter(
+            requireContext(),
+            viewModel,
+            args
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,8 +57,19 @@ class FoodBasketFragment : Fragment() {
     }
 
     private fun setAdapter() {
-        foodBasketAdapter = FoodBasketAdapter(requireContext(), viewModel, args)
-        binding.foodBasketAdapter = foodBasketAdapter
+        val recyclerView = binding.recyclerViewBasket
+        recyclerView.adapter = foodBasketAdapter
+
+        foodBasketAdapter.apply {
+            onItemTrashClicked = { currentItem ->
+                viewModel.deleteFoodFromBasket(currentItem.foodIdBasket, "e_inan")
+                Toast.makeText(
+                    requireContext(),
+                    "${currentItem.foodNameBasket} sepetten silindi.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
